@@ -2,25 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ContactData } from "~/types";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export const initialState: ContactData = {
-  title: "",
-  image: undefined,
-  persons: "",
-  price: "",
-  text: "",
-  location: "",
-  date: "",
-  smoking: false,
-  pets: false,
-};
+export const initialState: ContactData[] = [];
 
 export const contactSlice = createSlice({
-  name: "form",
+  name: "contacts",
   initialState,
   reducers: {
-    setFormData: (state, action: PayloadAction<ContactData>) => action.payload,
+    addContact: (state, action: PayloadAction<ContactData>) => {
+      state.push(action.payload);
+    },
   },
 });
 
-export const { setFormData } = contactSlice.actions;
+export const { addContact } = contactSlice.actions;
 export default contactSlice.reducer;
