@@ -1,14 +1,13 @@
 import { useAppSelector } from "./../../hooks/redux";
 import ContactCard from "./ContactCard";
-import { v4 as uuidv4 } from "uuid";
 
 const ContactsList = () => {
   const contacts = useAppSelector((state) => state.contacts);
-
+  console.log(contacts);
   return (
-    <ul className="grid grid-cols-3">
+    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {contacts.map((contact) => (
-        <li key={uuidv4()}>
+        <li key={contact.id}>
           <ContactCard {...contact} />
         </li>
       ))}

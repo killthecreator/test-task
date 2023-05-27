@@ -1,11 +1,15 @@
 import ContactForm from "./../components/Contacts/ContactForm";
 import ContactsList from "./../components/Contacts/ContactsList";
+import { useAppSelector } from "./../hooks/redux";
+import NoContacts from "./../components/Contacts/ContactsList";
 
 export const Contacts = () => {
+  const contacts = useAppSelector((state) => state.contacts);
+
   return (
-    <div>
-      <ContactForm />
-      <ContactsList />
+    <div className="flex flex-col items-center p-10 gap-10">
+      <ContactForm type="create" />
+      {contacts.length !== 0 ? <ContactsList /> : <NoContacts />}
     </div>
   );
 };

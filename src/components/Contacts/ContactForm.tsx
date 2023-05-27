@@ -3,16 +3,19 @@ import { useState } from "react";
 import { cn } from "./../../lib/utils";
 import type { ContactData } from "~/types";
 import { useAppDispatch } from "./../../hooks/redux";
-import { addContact } from "./../../redux/slices/contacts";
+import { addContact, editContact } from "./../../redux/slices/contacts";
+import { Card, CardTitle, Input, Label, Button } from "./../../components/ui";
 
-const ContactForm = () => {
+import { v4 as uuidv4 } from "uuid";
+
+type ContactFormProps = {
+  type: "edit" | "create";
+  id?: string;
+};
+
+const ContactForm = ({ type, id = "" }: ContactFormProps) => {
   const dispatch = useAppDispatch();
-
   const [isPopup, setPopup] = useState(false);
-
-  const handleClick = () => {
-    setPopup(true);
-  };
 
   const {
     register,
@@ -22,73 +25,101 @@ const ContactForm = () => {
   } = useForm<ContactData>();
 
   const onSubmit = (data: ContactData) => {
-    dispatch(addContact(data));
-
-    reset();
+    console.log(data);
     setPopup(false);
+    switch (type) {
+      case "create":
+        dispatch(addContact({ ...data, id: uuidv4() }));
+        break;
+      case "edit":
+        dispatch(editContact({ ...data, id }));
+        break;
+    }
+    reset();
   };
   return (
     <>
-      <button onClick={handleClick}>Create Contact</button>
-      <form
+      <Button
+        className={cn(type === "create" && "self-start")}
+        onClick={() => setPopup(true)}
+      >
+        {type === "create" && "Create Contact"}
+        {type === "edit" && "Edit"}
+      </Button>
+      <div
         className={cn(
-          "fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col items-center bg-slate-500 rounded-md gap-5 p-10",
+          "w-screen h-screen fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center z-50 bg-background/80 backdrop-blur-sm",
           !isPopup && "hidden"
         )}
-        onSubmit={handleSubmit(onSubmit)}
       >
-        <legend>Create contact</legend>
-        <fieldset className="flex gap-5">
-          <label>First Name:</label>
-          <input
-            type="text"
-            placeholder="First Name"
-            {...register("firstname")}
-            className={cn(
-              "p-1 rounded-md",
-              errors.firstname && "outline-red-500"
-            )}
-            required
-          />
-        </fieldset>
-        <fieldset className="flex gap-5">
-          <label>Last Name:</label>
-          <input
-            type="text"
-            placeholder="Last Name"
-            {...register("lastname")}
-            className={cn(
-              "p-1 rounded-md",
-              errors.lastname && "outline-red-500"
-            )}
-            required
-          />
-        </fieldset>
-        <fieldset className="flex items-center gap-5">
-          <label>Status</label>
-          <ul>
-            <li key="1" className="flex items-center gap-3">
-              <input
-                type="radio"
-                value="active"
-                {...register("active")}
-                defaultChecked
+        <Card className={cn(" lg:w-[500px] shadow-xl")}>
+          <form
+            className={"flex flex-col items-center gap-8 p-10"}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <CardTitle>
+              {type === "create" && "Create Contact"}
+              {type === "edit" && "Edit Contact"}
+            </CardTitle>
+            <div className="flex items-center gap-5">
+              <Label htmlFor="firstname" className="break-normal">
+                First Name:
+              </Label>
+              <Input
+                type="text"
+                id="firstname"
+                placeholder="First Name"
+                {...register("firstname")}
+                className={cn(
+                  "p-1 rounded-md",
+                  errors.firstname && "outline-red-500"
+                )}
+                required
               />
-              <label>Active</label>
-            </li>
-            <li key="2" className="flex items-center gap-3">
-              <input type="radio" value="inactive" {...register("active")} />
-              <label>Inactive</label>
-            </li>
-          </ul>
-        </fieldset>
-        <button
-          type="submit"
-          className="border border-slate-700 rounded-md p-1"
-        >
-          Save contact
-        </button>
-      </form>
+            </div>
+            <fieldset className="flex items-center gap-5">
+              <Label htmlFor="lastname">Last Name:</Label>
+              <Input
+                type="text"
+                id="lastname"
+                placeholder="Last Name"
+                {...register("lastname")}
+                className={cn(
+                  "p-1 rounded-md",
+                  errors.lastname && "outline-red-500"
+                )}
+                required
+              />
+            </fieldset>
+            <fieldset className="flex items-center gap-5">
+              <Label>Status</Label>
+              <fieldset className="flex flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  <input
+                    defaultChecked
+                    type="radio"
+                    value="active"
+                    {...register("active")}
+                  />
+                  <Label>Active</Label>
+                </div>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="radio"
+                    value="inactive"
+                    {...register("active")}
+                  />
+                  <Label>Inactive</Label>
+                </div>
+              </fieldset>
+            </fieldset>
+            <Button type="submit">
+              {type === "create" && "Save Contact"}
+              {type === "edit" && "Save Edited Contact"}
+            </Button>
+          </form>
+        </Card>
+      </div>
     </>
   );
 };
