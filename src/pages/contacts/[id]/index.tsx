@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useAppSelector } from "./../../../hooks/redux";
 import { useEffect } from "react";
-import ContactCard from "./../../../components/Contacts/ContactCard";
+import Loading from "./../../../components/loading";
 import {
   Card,
   CardTitle,
@@ -15,12 +15,22 @@ const ContactDetails = () => {
   const navigate = useNavigate();
 
   const { contacts } = useAppSelector((state) => state);
-
   const curContact = contacts.find((contact) => contact.id === id);
 
   useEffect(() => {
-    if (!curContact) navigate("/404");
-  });
+    if (!curContact) {
+      navigate("/404");
+    }
+  }, [curContact, navigate]);
+
+  if (!curContact) {
+    navigate("/404");
+    return (
+      <div className="w-full h-full flex justify-center items-center">
+        <Loading />
+      </div>
+    );
+  }
 
   if (!curContact) throw new Error("Contact not found");
 

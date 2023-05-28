@@ -21,9 +21,12 @@ const ContactCard = ({ firstname, lastname, active, id }: ContactData) => {
         <CardDescription>{active}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
-        <Button variant="outline">
-          <Link to={`/contacts/${id}`}>More contact details</Link>
-        </Button>
+        <Link to={`/contacts/${id}`}>
+          <Button className="w-full" variant="outline">
+            More contact details
+          </Button>
+        </Link>
+
         <ContactForm type="edit" id={id} />
         <Button
           onClick={() => dispatch(deleteContact(id))}

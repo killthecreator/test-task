@@ -4,7 +4,7 @@ import { useAppSelector } from "../../hooks/redux";
 import NoContacts from "../../components/Contacts/NoContacts";
 
 export const Contacts = () => {
-  const contacts = useAppSelector((state) => state.contacts);
+  const { contacts } = useAppSelector((state) => state);
   return (
     <div className="flex flex-col items-center gap-10">
       <ContactForm type="create" />

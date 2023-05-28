@@ -4,7 +4,6 @@ import { Contact2, BarChart3 } from "lucide-react";
 import { useLocation, type Location } from "react-router-dom";
 import { cn } from "./lib/utils";
 import ContactDetails from "./pages/contacts/[id]";
-import { useParams } from "react-router-dom";
 
 const routes = [
   {
@@ -66,7 +65,7 @@ const App = () => {
               path="/"
               element={<Navigate to="contacts" replace={true} />}
             />
-            <Route path="contacts" element={<Contacts />}></Route>
+            <Route path="contacts" element={<Contacts />} />
             <Route path="contacts/:id" element={<ContactDetails />} />
             <Route path="chartsnmaps" element={<ChartsNMaps />} />
             <Route path="*" element={<NotFound />} />
