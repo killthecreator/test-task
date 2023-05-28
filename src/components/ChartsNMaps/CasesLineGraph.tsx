@@ -30,6 +30,7 @@ ChartJS.register(
 const options = {
   responsive: true,
   redraw: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       display: false,
@@ -65,9 +66,6 @@ const CasesLineGraph = () => {
 
   const labels = Object.keys(data.cases);
   const dataOutput = Object.values(data.cases);
-
-  console.log(dataOutput.map(toExp));
-
   const cases = {
     labels,
     datasets: [
@@ -83,7 +81,7 @@ const CasesLineGraph = () => {
   };
 
   return (
-    <div className="m-auto max-w-[1000px] w-full">
+    <div className="m-auto max-w-[1000px] w-full aspect-square sm:aspect-video">
       <Line options={options} data={cases} />
     </div>
   );

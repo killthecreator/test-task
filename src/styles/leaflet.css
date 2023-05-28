@@ -4,3 +4,9 @@
   aspect-ratio: 920/480;
   margin: auto;
 }
+
+@media screen and (max-width: 500px) {
+  .leaflet-container {
+    aspect-ratio: 1/1;
+  }
+}
