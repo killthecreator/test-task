@@ -81,3 +81,7 @@ I used suggested API https://disease.sh/v3/covid-19/ with Covid-19 data to maint
 3. GET request to the third endpoint returns an object with current Covid-19 situation per country and data from it used within the second section of `.../chartsnmaps` page with the line leaflet map.
 
 All the API objects are mocked as custom types for typesafety.
+
+## P.S.
+
+I'd probaly use Next.js even for simple apps like this one, because in my opinion it is easier to handle routing with what Next.js provides us in that terms, especially with dynamic routes, like those with Contact routes with IDs.

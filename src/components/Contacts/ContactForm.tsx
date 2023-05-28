@@ -128,17 +128,19 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
                     defaultChecked
                     type="radio"
                     value="active"
+                    id="active"
                     {...register("active")}
                   />
-                  <Label>Active</Label>
+                  <Label htmlFor="active">Active</Label>
                 </div>
                 <div className="flex items-center gap-3">
                   <input
                     type="radio"
                     value="inactive"
+                    id="inactive"
                     {...register("active")}
                   />
-                  <Label>Inactive</Label>
+                  <Label htmlFor="inactive">Inactive</Label>
                 </div>
               </fieldset>
             </fieldset>
