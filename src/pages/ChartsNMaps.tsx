@@ -1,3 +1,5 @@
+import Graph from "./../components/ChartsNMaps/Graph";
+
 export const ChartsNMaps = () => {
-  return <div>ChartsNMaps</div>;
+  return <Graph />;
 };

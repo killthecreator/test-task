@@ -1,5 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import { getAll } from "./api";
 import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 import { Contacts, ChartsNMaps, NotFound } from "./pages";
 import { Contact2, BarChart3 } from "lucide-react";
@@ -26,7 +24,6 @@ const curPageFinder = (location: Location) =>
 
 const App = () => {
   const location = useLocation();
-  const { data, isLoading } = useQuery({ queryKey: ["all"], queryFn: getAll });
 
   return (
     <div className="flex flex-col h-screen">
