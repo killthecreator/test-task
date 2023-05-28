@@ -64,7 +64,7 @@ const Graph = () => {
   };
 
   return (
-    <div className="p-10 m-auto max-w-[1000px] w-full">
+    <div className="m-auto max-w-[1000px] w-full">
       <Line options={options} data={cases} />
     </div>
   );

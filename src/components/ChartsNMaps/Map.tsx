@@ -7,8 +7,16 @@ import { getByCountry } from "./../../api";
 import Loading from "../loading";
 import type { DataByCountry } from "~/types";
 import { v4 as uuidv4 } from "uuid";
+import pin from "./../../assets/map-pin.svg";
+import { Card, CardTitle, CardHeader, CardDescription } from "../ui";
 
-const position = new L.LatLng(0, 0);
+const icon = L.icon({
+  iconUrl: pin,
+  iconRetinaUrl: pin,
+  iconAnchor: [5, 55],
+  popupAnchor: [10, -44],
+  iconSize: [25, 55],
+});
 
 const southEast = L.latLng(-90, 180),
   northWest = L.latLng(90, -180),
@@ -46,9 +54,17 @@ const Map = () => {
           <li key={country.countryInfo._id ?? uuidv4()}>
             <Marker
               position={[country.countryInfo.lat, country.countryInfo.long]}
+              icon={icon}
             >
               <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
+                <Card className="border-none">
+                  <CardTitle>{country.country}</CardTitle>
+                  <div className="flex flex-col mt-2">
+                    <span>{`Active cases: ${country.active}`}</span>
+                    <span>{`Deaths: ${country.deaths}`}</span>
+                    <span>{`Recovered: ${country.recovered}`}</span>
+                  </div>
+                </Card>
               </Popup>
             </Marker>
           </li>
