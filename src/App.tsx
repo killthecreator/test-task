@@ -46,7 +46,7 @@ const App = () => {
                     cn(
                       isActive
                         ? "underline scale-105 font-bold"
-                        : "no-underline font-semibold",
+                        : "no-underline font-semibold opacity-50",
                       "flex items-center justify-between"
                     )
                   }
