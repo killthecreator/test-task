@@ -57,6 +57,8 @@ Extra:
 
 When user tries to reach a non-existing route, it will lead to 404 page.
 
+App is fully responsive and adaptive.
+
 ## What else is used
 
 1. App was made using `create-react-app` with typescript template;
