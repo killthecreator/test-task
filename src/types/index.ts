@@ -1,2 +1,4 @@
 export * from "./ContactData";
-export * from "./dataByCountry";
+export * from "./DataByCountry";
+export * from "./DataWorldwide";
+export * from "./DataByDate";

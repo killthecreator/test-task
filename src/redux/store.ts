@@ -1,9 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import contactsSliceReducer from "./slices/contacts";
-import chartsNMapsReducer from "./slices/chartsNMaps";
 
 const store = configureStore({
-  reducer: { contacts: contactsSliceReducer, chartsNMaps: chartsNMapsReducer },
+  reducer: { contacts: contactsSliceReducer },
 });
 export default store;
 

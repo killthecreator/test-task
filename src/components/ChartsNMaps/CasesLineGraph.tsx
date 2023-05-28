@@ -11,8 +11,9 @@ import {
 import { Line } from "react-chartjs-2";
 
 import { useQuery } from "@tanstack/react-query";
-import { getCasesByDate } from "./../../api";
+import { getCasesByDate } from "../../api";
 import Loading from "../loading";
+import { DataByDate } from "./../../types";
 
 ChartJS.register(
   CategoryScale,
@@ -37,8 +38,8 @@ const options = {
   },
 };
 
-const Graph = () => {
-  const { data, isLoading } = useQuery({
+const CasesLineGraph = () => {
+  const { data, isLoading } = useQuery<DataByDate>({
     queryKey: ["bydate"],
     queryFn: getCasesByDate,
   });
@@ -70,4 +71,4 @@ const Graph = () => {
   );
 };
 
-export default Graph;
+export default CasesLineGraph;
