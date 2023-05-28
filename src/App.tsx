@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAll } from "./api";
-import { Routes, Route, NavLink } from "react-router-dom";
+import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 import { Contacts, ChartsNMaps, NotFound } from "./pages";
 import { Contact2, BarChart3 } from "lucide-react";
 import { useLocation, type Location } from "react-router-dom";
@@ -63,6 +63,10 @@ const App = () => {
         </nav>
         <main className="self-start w-full">
           <Routes>
+            <Route
+              path="/"
+              element={<Navigate to="/contacts" replace={true} />}
+            />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/chartsnmaps" element={<ChartsNMaps />} />
             <Route path="*" element={<NotFound />} />
