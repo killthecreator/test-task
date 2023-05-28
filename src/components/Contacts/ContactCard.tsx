@@ -8,8 +8,11 @@ import {
   CardContent,
 } from "../ui";
 import ContactForm from "./ContactForm";
+import { deleteContact } from "./../..//redux/slices/contacts";
+import { useAppDispatch } from "./../../hooks/redux";
 
 const ContactCard = ({ firstname, lastname, active, id }: ContactData) => {
+  const dispatch = useAppDispatch();
   return (
     <Card className="max-w-lg w-[250px]">
       <CardHeader>
@@ -18,7 +21,12 @@ const ContactCard = ({ firstname, lastname, active, id }: ContactData) => {
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
         <ContactForm type="edit" id={id} />
-        <Button variant="destructive">Delete</Button>
+        <Button
+          onClick={() => dispatch(deleteContact(id))}
+          variant="destructive"
+        >
+          Delete
+        </Button>
       </CardContent>
     </Card>
   );
