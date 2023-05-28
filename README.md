@@ -1,5 +1,7 @@
 # Contact card builder / Covid stats checker
 
+To run the app you need to clone this repository and run `npm install` to load all the packages
+
 ## Available Scripts
 
 In the project directory, you can run:
