@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { cn } from "./../../lib/utils";
 import type { ContactData } from "~/types";
 import { useAppDispatch } from "./../../hooks/redux";
 import { addContact, editContact } from "./../../redux/slices/contacts";
 import { Card, CardTitle, Input, Label, Button } from "./../../components/ui";
+import { XCircle } from "lucide-react";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -16,6 +17,7 @@ type ContactFormProps = {
 const ContactForm = ({ type, id = "" }: ContactFormProps) => {
   const dispatch = useAppDispatch();
   const [isPopup, setPopup] = useState(false);
+  const closeBtn = useRef(null);
 
   const {
     register,
@@ -25,7 +27,6 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
   } = useForm<ContactData>();
 
   const onSubmit = (data: ContactData) => {
-    console.log(data);
     setPopup(false);
     switch (type) {
       case "create":
@@ -37,10 +38,20 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
     }
     reset();
   };
+
+  const handleClose = (e: React.SyntheticEvent<HTMLElement>) => {
+    if (
+      (closeBtn.current && e.target === closeBtn.current) ||
+      e.target === e.currentTarget
+    ) {
+      setPopup(false);
+      reset();
+    } else return;
+  };
   return (
     <>
       <Button
-        className={cn(type === "create" && "self-start")}
+        className={cn(type === "create" && "sm:self-start")}
         onClick={() => setPopup(true)}
       >
         {type === "create" && "Create Contact"}
@@ -51,8 +62,13 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
           "w-screen h-screen fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 flex justify-center items-center z-50 bg-background/80 backdrop-blur-sm",
           !isPopup && "hidden"
         )}
+        onClick={handleClose}
       >
-        <Card className={cn(" lg:w-[500px] shadow-xl")}>
+        <Card className={" lg:w-[500px] shadow-xl relative"}>
+          <XCircle
+            className="absolute top-5 right-5 cursor-pointer"
+            ref={closeBtn}
+          />
           <form
             className={"flex flex-col items-center gap-8 p-10"}
             onSubmit={handleSubmit(onSubmit)}

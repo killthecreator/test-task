@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ContactData } from "~/types";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export const initialState: ContactData[] = [];
+const initialState: ContactData[] = [];
 
 export const contactSlice = createSlice({
   name: "contacts",

@@ -33,9 +33,9 @@ const App = () => {
       <header className="flex justify-center items-center text-xl font-bold backdrop-blur-[2px] dark:shadow-[#ffffff1a] sm:h-16 px-2 h-16 shadow-md">
         <span>{curPageFinder(location)?.name}</span>
       </header>
-      <div className="flex items-center grow">
-        <nav className="h-full">
-          <ul className="flex flex-col gap-6 h-full justify-center shadow">
+      <div className="flex flex-col items-center grow sm:flex-row">
+        <nav className="sm:h-full sm:w-max w-full">
+          <ul className="flex sm:flex-col gap-6 h-10 items-center w-full sm:h-full justify-center shadow">
             {routes.map((route) => (
               <li
                 key={route.id}
