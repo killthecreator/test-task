@@ -81,7 +81,7 @@ const CasesLineGraph = () => {
   };
 
   return (
-    <div className="m-auto max-w-[1000px] w-full aspect-square sm:aspect-video">
+    <div className="m-auto max-w-[1000px] w-[99%] aspect-square sm:aspect-video">
       <Line options={options} data={cases} />
     </div>
   );
