@@ -61,7 +61,7 @@ App is fully responsive and adaptive.
 
 ## What else is used
 
-1. App was made using `create-react-app` with typescript template;
+1. App was made using `create-react-app` with typescript template (P.S. `create-react-app` is not recommended way to maintain react application anymore even via official React docs, but since it was required made the app using it);
 2. Tailwind CSS for app styling;
 3. Redux(Redux Toolkit) for state management;
 4. `shadcn/ui` for UI and styling the components;
