@@ -3,7 +3,7 @@ import { XCircle } from "lucide-react";
 
 const NoContacts = () => {
   return (
-    <Card className="p-10 flex items-center gap-5">
+    <Card className="p-5 sm:p-10 flex items-center gpa-2 sm:gap-5">
       <XCircle className="w-10 h-10" />
       <CardContent className="pt-6">
         <CardTitle className="mb-5">Not contacts found</CardTitle>

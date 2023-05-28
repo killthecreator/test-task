@@ -64,21 +64,25 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
         )}
         onClick={handleClose}
       >
-        <Card className={" lg:w-[500px] shadow-xl relative"}>
+        <Card
+          className={
+            " lg:max-w-[500px] w-full max-w-[350px] shadow-xl relative mx-4"
+          }
+        >
           <XCircle
             className="absolute top-5 right-5 cursor-pointer"
             ref={closeBtn}
           />
           <form
-            className={"flex flex-col items-center gap-8 p-10"}
+            className={"flex flex-col items-center gap-6 md:gap-8 p-10"}
             onSubmit={handleSubmit(onSubmit)}
           >
             <CardTitle>
               {type === "create" && "Create Contact"}
               {type === "edit" && "Edit Contact"}
             </CardTitle>
-            <fieldset className="flex items-center gap-5">
-              <Label htmlFor="firstname" className="break-normal">
+            <fieldset className="grid md:grid-cols-[auto_1fr] items-center gap-2 md:gap-5">
+              <Label htmlFor="firstname" className="w-max">
                 First Name:
               </Label>
               <Input
@@ -95,7 +99,7 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
                 )}
               />
             </fieldset>
-            <fieldset className="flex items-center gap-5">
+            <fieldset className="grid md:grid-cols-[auto_1fr] items-center gap-2 md:gap-5">
               <Label htmlFor="lastname">Last Name:</Label>
               <Input
                 type="text"
