@@ -4,6 +4,7 @@ import { Routes, Route, NavLink } from "react-router-dom";
 import { Contacts, ChartsNMaps, NotFound } from "./pages";
 import { Contact2, BarChart3 } from "lucide-react";
 import { useLocation, type Location } from "react-router-dom";
+import { cn } from "./lib/utils";
 
 const routes = [
   {
@@ -42,18 +43,19 @@ const App = () => {
               >
                 <NavLink
                   className={({ isActive }) =>
-                    isActive
-                      ? "underline scale-105 font-bold"
-                      : "no-underline font-semibold"
+                    cn(
+                      isActive
+                        ? "underline scale-105 font-bold"
+                        : "no-underline font-semibold",
+                      "flex items-center justify-between"
+                    )
                   }
                   to={route.path}
                 >
-                  <div className="flex items-center justify-between">
-                    {<route.image className="w-16" />}
-                    <span className="hidden md:block text-center w-max grow pr-5">
-                      {route.name}
-                    </span>
-                  </div>
+                  {<route.image className="w-16" />}
+                  <span className="hidden md:block text-center w-max grow pr-5">
+                    {route.name}
+                  </span>
                 </NavLink>
               </li>
             ))}

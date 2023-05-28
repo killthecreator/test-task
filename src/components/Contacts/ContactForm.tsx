@@ -61,7 +61,7 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
               {type === "create" && "Create Contact"}
               {type === "edit" && "Edit Contact"}
             </CardTitle>
-            <div className="flex items-center gap-5">
+            <fieldset className="flex items-center gap-5">
               <Label htmlFor="firstname" className="break-normal">
                 First Name:
               </Label>
@@ -69,26 +69,28 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
                 type="text"
                 id="firstname"
                 placeholder="First Name"
-                {...register("firstname")}
+                {...register("firstname", {
+                  required: "Firstname is required",
+                })}
                 className={cn(
                   "p-1 rounded-md",
-                  errors.firstname && "outline-red-500"
+                  errors.firstname &&
+                    "ring-red-500 ring-offset-red-500  ring-2 focus-visible:ring-0"
                 )}
-                required
               />
-            </div>
+            </fieldset>
             <fieldset className="flex items-center gap-5">
               <Label htmlFor="lastname">Last Name:</Label>
               <Input
                 type="text"
                 id="lastname"
                 placeholder="Last Name"
-                {...register("lastname")}
+                {...register("lastname", { required: "Lastname is required" })}
                 className={cn(
                   "p-1 rounded-md",
-                  errors.lastname && "outline-red-500"
+                  errors.lastname &&
+                    "ring-red-500 ring-offset-red-500 ring-2 focus-visible:ring-0"
                 )}
-                required
               />
             </fieldset>
             <fieldset className="flex items-center gap-5">
