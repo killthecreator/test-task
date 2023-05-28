@@ -1,6 +1,7 @@
 import { Card, CardTitle, CardDescription, CardContent } from "../ui";
 import { XCircle } from "lucide-react";
 
+/* Card-indicator, that no contacts yet created */
 const NoContacts = () => {
   return (
     <Card className="p-5 sm:p-10 flex items-center gpa-2 sm:gap-5">

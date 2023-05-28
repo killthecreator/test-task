@@ -10,29 +10,31 @@ import {
   CardHeader,
 } from "./../../../components/ui";
 
+/* Component for dynamic route with certain contact ID details */
 const ContactDetails = () => {
+  /* Getting current ID from pathname */
   const { id } = useParams();
   const navigate = useNavigate();
 
   const { contacts } = useAppSelector((state) => state);
+  /* Trying to find the ID in our local contacts database */
   const curContact = contacts.find((contact) => contact.id === id);
 
+  /* Redirecting to 404 page if ID is not found */
   useEffect(() => {
     if (!curContact) {
       navigate("/404");
     }
   }, [curContact, navigate]);
 
+  /* Loading for the redirection, since it's not immediate */
   if (!curContact) {
-    navigate("/404");
     return (
       <div className="w-full h-full flex justify-center items-center">
         <Loading />
       </div>
     );
   }
-
-  if (!curContact) throw new Error("Contact not found");
 
   return (
     <div className="flex justify-center items-center ">

@@ -15,6 +15,7 @@ import { getCasesByDate } from "../../api";
 import Loading from "../loading";
 import { DataByDate } from "./../../types";
 
+/* Function to convert cases value to more short exponential notation */
 const toExp = (value: string | number) => Number(value).toExponential(2);
 
 ChartJS.register(
@@ -27,6 +28,7 @@ ChartJS.register(
   Legend
 );
 
+/* Options object for Graph */
 const options = {
   responsive: true,
   redraw: true,
@@ -55,6 +57,7 @@ const CasesLineGraph = () => {
     queryFn: getCasesByDate,
   });
 
+  /* Handling case if data was not loaded. Either loading spinner or message with error */
   if (!data) {
     return (
       <div className="flex flex-col justify-center items-center aspect-[920/460] gap-10">

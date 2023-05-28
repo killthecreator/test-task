@@ -1,3 +1,4 @@
+/* Loading spinner component used throughout the app */
 const Loading = () => {
   return (
     <div role="status">

@@ -5,6 +5,7 @@ import { useLocation, type Location } from "react-router-dom";
 import { cn } from "./lib/utils";
 import ContactDetails from "./pages/contacts/[id]";
 
+/* Page main routes array */
 const routes = [
   {
     id: 1,
@@ -20,6 +21,7 @@ const routes = [
   },
 ];
 
+/* Function to define current page title in header */
 const curPageFinder = (location: Location) =>
   routes.find((route) => route.path === location.pathname);
 

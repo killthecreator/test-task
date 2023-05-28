@@ -1,3 +1,4 @@
+/* Type for Contact object */
 export type ContactData = {
   id: string;
   firstname: string;

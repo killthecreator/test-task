@@ -1,3 +1,4 @@
+/* Type for returning object from https://disease.sh/v3/covid-19/countries endpoint */
 export type DataByCountry = {
   updated: number;
   country: string;

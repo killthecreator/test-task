@@ -1,6 +1,7 @@
 import { useAppSelector } from "./../../hooks/redux";
 import ContactCard from "./ContactCard";
 
+/* Mapper through all the available contacts */
 const ContactsList = () => {
   const { contacts } = useAppSelector((state) => state);
   return (

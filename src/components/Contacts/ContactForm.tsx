@@ -14,6 +14,12 @@ type ContactFormProps = {
   id?: string;
 };
 
+/* Form has two modes: "create" and "edit" to make corresponding 
+actions with contact cards respectively. The only things that 
+are changing between two modes is what action will be dispatched 
+on submit and some text fields inside the form. To edit a contact
+you need to also prove its ID.
+ */
 const ContactForm = ({ type, id = "" }: ContactFormProps) => {
   const dispatch = useAppDispatch();
   const [isPopup, setPopup] = useState(false);
@@ -26,6 +32,7 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
     formState: { errors },
   } = useForm<ContactData>();
 
+  /* Form submit handler */
   const onSubmit = (data: ContactData) => {
     setPopup(false);
     switch (type) {
@@ -39,6 +46,8 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
     reset();
   };
 
+  /* Handler for closing popup before submit: can be closed via clicking on
+  the cross button or outside the popup */
   const handleClose = (e: React.SyntheticEvent<HTMLElement>) => {
     if (
       (closeBtn.current && e.target === closeBtn.current) ||

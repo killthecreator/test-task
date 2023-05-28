@@ -12,6 +12,12 @@ import { deleteContact } from "./../../redux/slices/contacts";
 import { useAppDispatch } from "./../../hooks/redux";
 import { Link } from "react-router-dom";
 
+/* Contact card has field with text data, provided on creation/editing
+plus three buttons: 
+1. Button, redirecting to route for that specific contact with more details
+provided
+2. Button to edit the contact
+3. Button to delete the contact */
 const ContactCard = ({ firstname, lastname, active, id }: ContactData) => {
   const dispatch = useAppDispatch();
   return (

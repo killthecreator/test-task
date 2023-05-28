@@ -14,6 +14,7 @@ const CasesPie = () => {
     queryFn: getAll,
   });
 
+  /* Handling case if data was not loaded. Either loading spinner or message with error */
   if (!data) {
     return (
       <div className="flex flex-col justify-center items-center max-w-[500px] w-full m-auto aspect-square gap-10">

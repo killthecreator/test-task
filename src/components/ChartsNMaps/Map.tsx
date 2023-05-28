@@ -8,8 +8,10 @@ import Loading from "../loading";
 import type { DataByCountry } from "~/types";
 import { v4 as uuidv4 } from "uuid";
 import pin from "./../../assets/map-pin.svg";
-import { Card, CardTitle, CardHeader, CardDescription } from "../ui";
+import { Card, CardTitle } from "../ui";
 
+/* Changing marker icon from default to custom (default icon
+  somehow stopped loading when I changed map styling) */
 const icon = L.icon({
   iconUrl: pin,
   iconRetinaUrl: pin,
@@ -18,16 +20,18 @@ const icon = L.icon({
   iconSize: [25, 55],
 });
 
+/* Restricting map bounds */
 const southEast = L.latLng(-90, 180),
   northWest = L.latLng(90, -180),
   bounds = L.latLngBounds(southEast, northWest);
 
 const Map = () => {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<DataByCountry[]>({
     queryKey: ["byCountry"],
     queryFn: getByCountry,
   });
 
+  /* Handling case if data was not loaded. Either loading spinner or message with error */
   if (!data) {
     return (
       <div className="flex flex-col justify-center items-center aspect-[920/460] gap-10">
@@ -50,6 +54,7 @@ const Map = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <ul>
+        {/* Mapping through all the markers */}
         {data.map((country: DataByCountry) => (
           <li key={country.countryInfo._id ?? uuidv4()}>
             <Marker
