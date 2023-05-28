@@ -1,4 +1,4 @@
-# Contact card builder / Codiv stats checker
+# Contact card builder / Covid stats checker
 
 ## Available Scripts
 
