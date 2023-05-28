@@ -37,7 +37,7 @@ const CasesPie = () => {
   };
 
   return (
-    <div className="m-auto max-w-[500px] w-full flex justify-center items-center gap-3">
+    <div className="m-auto w-full grid sm:grid-cols-[auto_auto] justify-center items-center gap-3">
       <div className="flex flex-col gap-5">
         <p className="font-bold">Worldwide stats</p>
         <div className="flex flex-col  gap-3 w-max">
@@ -47,7 +47,9 @@ const CasesPie = () => {
         </div>
       </div>
 
-      <Pie data={cases} />
+      <div className="flex justify-center max-w-[500px]">
+        <Pie data={cases} />
+      </div>
     </div>
   );
 };

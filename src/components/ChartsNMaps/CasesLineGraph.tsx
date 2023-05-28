@@ -15,6 +15,8 @@ import { getCasesByDate } from "../../api";
 import Loading from "../loading";
 import { DataByDate } from "./../../types";
 
+const toExp = (value: string | number) => Number(value).toExponential(2);
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -27,6 +29,7 @@ ChartJS.register(
 
 const options = {
   responsive: true,
+  redraw: true,
   plugins: {
     legend: {
       display: false,
@@ -34,6 +37,13 @@ const options = {
     title: {
       display: true,
       text: "COVID-19 Cases",
+    },
+  },
+  scales: {
+    y: {
+      ticks: {
+        callback: toExp,
+      },
     },
   },
 };
@@ -54,12 +64,20 @@ const CasesLineGraph = () => {
   }
 
   const labels = Object.keys(data.cases);
+  const dataOutput = Object.values(data.cases);
+
+  console.log(dataOutput.map(toExp));
+
   const cases = {
     labels,
     datasets: [
       {
-        data: Object.values(data.cases),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        data: window.innerWidth > 500 ? dataOutput : dataOutput.map(toExp),
+        fill: false,
+        borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: window.innerWidth > 500 ? 7 : 2,
+        pointRadius: 0,
+        tension: 0.01,
       },
     ],
   };

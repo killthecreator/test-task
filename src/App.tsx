@@ -58,7 +58,7 @@ const App = () => {
             ))}
           </ul>
         </nav>
-        <main className="self-start w-full p-10">
+        <main className="self-start w-full sm:p-10 p-6">
           <Routes>
             <Route
               path="/"
