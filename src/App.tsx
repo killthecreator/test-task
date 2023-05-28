@@ -26,13 +26,13 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col h-screen">
-      <header className="flex justify-center items-center text-xl font-bold backdrop-blur-[2px] dark:shadow-[#ffffff1a] sm:h-16 px-2 h-16 shadow-md">
+    <div className="grid grid-rows-[auto_1fr] min-h-screen">
+      <header className="flex justify-center items-center text-xl font-bold backdrop-blur-[2px] dark:shadow-[#ffffff1a] px-2 h-16 shadow-md">
         <span>{curPageFinder(location)?.name}</span>
       </header>
       <div className="flex flex-col items-center grow sm:flex-row">
         <nav className="sm:h-full sm:w-max w-full">
-          <ul className="flex sm:flex-col gap-6 h-10 items-center w-full sm:h-full justify-center shadow">
+          <ul className="flex sm:flex-col gap-6 h-10 items-center w-full sm:justify-start justify-center sm:h-full py-10 shadow">
             {routes.map((route) => (
               <li
                 key={route.id}
@@ -58,7 +58,7 @@ const App = () => {
             ))}
           </ul>
         </nav>
-        <main className="self-start w-full">
+        <main className="self-start w-full p-10">
           <Routes>
             <Route
               path="/"

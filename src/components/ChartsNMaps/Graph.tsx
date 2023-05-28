@@ -43,13 +43,14 @@ const Graph = () => {
     queryFn: getCasesByDate,
   });
 
-  if (!data && isLoading)
+  if (!data) {
     return (
       <div className="flex flex-col justify-center items-center aspect-[920/460] gap-10">
-        <p>Loading graph</p>
-        <Loading />
+        <p> {isLoading ? "Loading graph" : "Data was not found"}</p>
+        {isLoading && <Loading />}
       </div>
     );
+  }
 
   const labels = Object.keys(data.cases);
   const cases = {
@@ -63,7 +64,7 @@ const Graph = () => {
   };
 
   return (
-    <div className="p-10 m-auto max-w-[1000px] flex gap-10 w-full">
+    <div className="p-10 m-auto max-w-[1000px] w-full">
       <Line options={options} data={cases} />
     </div>
   );

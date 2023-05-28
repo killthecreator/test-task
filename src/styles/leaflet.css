@@ -1,0 +1,6 @@
+.leaflet-container {
+  max-width: 1000px;
+  width: 100%;
+  aspect-ratio: 920/480;
+  margin: auto;
+}
