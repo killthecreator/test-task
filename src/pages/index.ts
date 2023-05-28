@@ -1,3 +1,3 @@
-export * from "./Contacts";
-export * from "./ChartsNMaps";
+export * from "./contacts";
+export * from "./chartsnmaps";
 export * from "./NotFound";

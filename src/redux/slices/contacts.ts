@@ -16,7 +16,6 @@ export const contactSlice = createSlice({
         item.id === action.payload.id ? action.payload : item
       );
     },
-
     deleteContact: (state, action: PayloadAction<ContactData["id"]>) => {
       return state.filter((item) => item.id !== action.payload);
     },

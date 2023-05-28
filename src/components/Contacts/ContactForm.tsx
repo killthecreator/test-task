@@ -46,7 +46,7 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
     ) {
       setPopup(false);
       reset();
-    } else return;
+    }
   };
   return (
     <>
@@ -92,11 +92,10 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
                 {...register("firstname", {
                   required: "Firstname is required",
                 })}
-                className={cn(
-                  "p-1 rounded-md",
+                className={
                   errors.firstname &&
-                    "ring-red-500 ring-offset-red-500  ring-2 focus-visible:ring-0"
-                )}
+                  "ring-red-500 ring-offset-red-500  ring-2 focus-visible:ring-0"
+                }
               />
             </fieldset>
             <fieldset className="grid md:grid-cols-[auto_1fr] items-center gap-2 md:gap-5">
@@ -106,11 +105,10 @@ const ContactForm = ({ type, id = "" }: ContactFormProps) => {
                 id="lastname"
                 placeholder="Last Name"
                 {...register("lastname", { required: "Lastname is required" })}
-                className={cn(
-                  "p-1 rounded-md",
+                className={
                   errors.lastname &&
-                    "ring-red-500 ring-offset-red-500 ring-2 focus-visible:ring-0"
-                )}
+                  "ring-red-500 ring-offset-red-500 ring-2 focus-visible:ring-0"
+                }
               />
             </fieldset>
             <fieldset className="flex items-center gap-5">
