@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from "./../components/ui";
+import { Card, CardTitle, CardDescription, CardContent } from "~/components/ui";
 import { XCircle } from "lucide-react";
 
 export const NotFound = () => {

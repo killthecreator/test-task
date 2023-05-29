@@ -1,12 +1,12 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "./../../styles/leaflet.css";
+import "~/styles/leaflet.css";
 import Loading from "../loading";
 import { v4 as uuidv4 } from "uuid";
-import pin from "./../../assets/map-pin.svg";
+import pin from "~/assets/map-pin.svg";
 import { Card, CardTitle } from "../ui";
-import { useGetCovidStatsByCountry } from "./../../hooks/api";
+import { useGetCovidStatsByCountry } from "~/hooks/api";
 
 /* Changing marker icon from default to custom (default icon
   somehow stopped loading when I changed map styling) */

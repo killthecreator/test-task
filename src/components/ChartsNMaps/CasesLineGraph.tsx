@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import Loading from "../loading";
-import { useGetCovidCasesByDate } from "./../../hooks/api";
+import { useGetCovidCasesByDate } from "~/hooks/api";
 
 /* Function to convert cases value to more short exponential notation */
 const toExp = (value: string | number) => Number(value).toExponential(2);

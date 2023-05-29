@@ -2,7 +2,7 @@ import {
   getCovidCasesByDate,
   getCovidStatsByCountry,
   getCovidWorldwideStats,
-} from "./../api";
+} from "~/api";
 
 import { useQuery } from "@tanstack/react-query";
 

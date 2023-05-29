@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
-import { cn } from "./../../lib/utils";
+import { cn } from "~/lib/utils";
 import type { ContactData } from "~/types";
-import { useAppDispatch } from "./../../hooks/redux";
-import { addContact, editContact } from "./../../redux/slices/contacts";
-import { Card, CardTitle, Input, Label, Button } from "./../../components/ui";
+import { useAppDispatch } from "~/hooks/redux";
+import { addContact, editContact } from "~/redux/slices/contacts";
+import { Card, CardTitle, Input, Label, Button } from "~/components/ui";
 import { XCircle } from "lucide-react";
 
 import { v4 as uuidv4 } from "uuid";

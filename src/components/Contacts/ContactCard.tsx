@@ -8,8 +8,8 @@ import {
   CardContent,
 } from "../ui";
 import ContactForm from "./ContactForm";
-import { deleteContact } from "./../../redux/slices/contacts";
-import { useAppDispatch } from "./../../hooks/redux";
+import { deleteContact } from "~/redux/slices/contacts";
+import { useAppDispatch } from "~/hooks/redux";
 import { Link } from "react-router-dom";
 
 /* Contact card has field with text data, provided on creation/editing

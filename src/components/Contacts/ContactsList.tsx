@@ -1,4 +1,4 @@
-import { useAppSelector } from "./../../hooks/redux";
+import { useAppSelector } from "~/hooks/redux";
 import ContactCard from "./ContactCard";
 
 /* Mapper through all the available contacts */

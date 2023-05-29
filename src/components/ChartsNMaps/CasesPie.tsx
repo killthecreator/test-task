@@ -1,7 +1,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import Loading from "../loading";
-import { useGetCovidWorldwideStats } from "./../../hooks/api";
+import { useGetCovidWorldwideStats } from "~/hooks/api";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
