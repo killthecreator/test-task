@@ -9,11 +9,8 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-
-import { useQuery } from "@tanstack/react-query";
-import { getCasesByDate } from "../../api";
 import Loading from "../loading";
-import { DataByDate } from "./../../types";
+import { useGetCovidCasesByDate } from "./../../hooks/api";
 
 /* Function to convert cases value to more short exponential notation */
 const toExp = (value: string | number) => Number(value).toExponential(2);
@@ -52,10 +49,7 @@ const options = {
 };
 
 const CasesLineGraph = () => {
-  const { data, isLoading } = useQuery<DataByDate>({
-    queryKey: ["bydate"],
-    queryFn: getCasesByDate,
-  });
+  const { data, isLoading } = useGetCovidCasesByDate();
 
   /* Handling case if data was not loaded. Either loading spinner or message with error */
   if (!data) {

@@ -2,13 +2,11 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./../../styles/leaflet.css";
-import { useQuery } from "@tanstack/react-query";
-import { getByCountry } from "./../../api";
 import Loading from "../loading";
-import type { DataByCountry } from "~/types";
 import { v4 as uuidv4 } from "uuid";
 import pin from "./../../assets/map-pin.svg";
 import { Card, CardTitle } from "../ui";
+import { useGetCovidStatsByCountry } from "./../../hooks/api";
 
 /* Changing marker icon from default to custom (default icon
   somehow stopped loading when I changed map styling) */
@@ -26,10 +24,7 @@ const southEast = L.latLng(-90, 180),
   bounds = L.latLngBounds(southEast, northWest);
 
 const Map = () => {
-  const { data, isLoading } = useQuery<DataByCountry[]>({
-    queryKey: ["byCountry"],
-    queryFn: getByCountry,
-  });
+  const { data, isLoading } = useGetCovidStatsByCountry();
 
   /* Handling case if data was not loaded. Either loading spinner or message with error */
   if (!data) {
@@ -55,7 +50,7 @@ const Map = () => {
       />
       <ul>
         {/* Mapping through all the markers */}
-        {data.map((country: DataByCountry) => (
+        {data.map((country) => (
           <li key={country.countryInfo._id ?? uuidv4()}>
             <Marker
               position={[country.countryInfo.lat, country.countryInfo.long]}

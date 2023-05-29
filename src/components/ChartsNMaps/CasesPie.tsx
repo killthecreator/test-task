@@ -1,18 +1,12 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-
-import { useQuery } from "@tanstack/react-query";
-import { getAll } from "../../api";
 import Loading from "../loading";
-import { DataWorldwide } from "./../../types";
+import { useGetCovidWorldwideStats } from "./../../hooks/api";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const CasesPie = () => {
-  const { data, isLoading } = useQuery<DataWorldwide>({
-    queryKey: ["worldwide"],
-    queryFn: getAll,
-  });
+  const { data, isLoading } = useGetCovidWorldwideStats();
 
   /* Handling case if data was not loaded. Either loading spinner or message with error */
   if (!data) {

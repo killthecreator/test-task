@@ -1,4 +1,4 @@
 /* All three GET Requests to corresponding API endpoints */
-export * from "./getAll";
-export * from "./getByCountry";
-export * from "./getCasesByDate";
+export * from "./getCovidWorldwideStats";
+export * from "./getCovidStatsByCountry";
+export * from "./getCovidCasesByDate";
